@@ -1,0 +1,4 @@
+# Project exclude paths
+/Cloud-Eureka-Server/target/
+/Data-Interface-Service/target/
+/Data-Statistics-Service/target/
