@@ -8,14 +8,16 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Data-Statistics-Server" />
-        <module name="Data-Interface-Server" />
         <module name="Cloud-Eureka-Server" />
+        <module name="Cloud-Zuul-Server" />
+        <module name="Data-Interface-Server" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Cloud-Eureka-Server" options="-parameters" />
+      <module name="Cloud-Zuul-Server" options="-parameters" />
       <module name="Data-Interface-Server" options="-parameters" />
       <module name="Data-Statistics-Server" options="-parameters" />
     </option>

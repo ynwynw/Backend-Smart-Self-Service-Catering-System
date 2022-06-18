@@ -11,8 +11,9 @@
 
     <modules>
         <module>cloud-eureka-server</module>
-        <module>Data-Interface-Service</module>
-        <module>Data-Statistics-Service</module>
+        <module>Data-Interface-Server</module>
+        <module>Data-Statistics-Server</module>
+        <module>Cloud-Zuul-Server</module>
     </modules>
 
     <properties>
