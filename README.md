@@ -1,3 +1,11 @@
+# 智慧自助餐饮系统前端链接：
+
+[Elsa-zlt/Front-end-Intelligent-self-service-catering-system: 智慧自助餐饮系统-前端部分-Vue (github.com)](https://github.com/Elsa-zlt/Front-end-Intelligent-self-service-catering-system)
+
+# 智慧自助餐饮系统后端SpringBoot版本：
+
+[Elsa-zlt/Smart_Buffet: 智慧自助餐饮系统后端部分-SpringBoot、Mybatis-Plus、SpringSecurity、JWT、Redis、MySQL、RabbitMQ (github.com)](https://github.com/Elsa-zlt/Smart_Buffet)
+
 # 智慧自助餐饮系统数据库设计
 
 # 小程序端：
