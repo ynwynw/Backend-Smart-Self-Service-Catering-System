@@ -4,6 +4,7 @@ import com.elsa.smart_buffet.pojo.History;
 import com.elsa.smart_buffet.pojo.ResultBox.ResponseResult;
 import com.elsa.smart_buffet.service.HistoryService;
 import com.elsa.smart_buffet.utils.RedisCache;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 
 @Service
+@Slf4j
 public class HistoryServiceImpl implements HistoryService {
 
     @Autowired
@@ -25,6 +27,7 @@ public class HistoryServiceImpl implements HistoryService {
     public ResponseResult insertHistory(History history) {
         String cId = history.getCId().toString();
         List list = redisCache.getCacheList(cId);
+        log.info("list:" + list);
         if(list != null) {
             redisCache.deleteObject(cId);
         }

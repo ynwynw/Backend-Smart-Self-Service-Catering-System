@@ -7,6 +7,7 @@ import com.elsa.smart_buffet.pojo.Order;
 import com.elsa.smart_buffet.pojo.ResultBox.ResponseResult;
 import com.elsa.smart_buffet.service.MessageService;
 import com.elsa.smart_buffet.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Map;
 
 @Service
+@Slf4j
 public class OrderServiceImpl implements OrderService {
 
     @Autowired
@@ -50,6 +52,7 @@ public class OrderServiceImpl implements OrderService {
 
         }
         System.out.println(totalPrice);
+        log.info("totalPrice:" + totalPrice);
 
         order.setCId(menuOrder.getCId());
         order.setOId(menuOrder.getOId());
@@ -82,12 +85,14 @@ public class OrderServiceImpl implements OrderService {
 
         }
 
-        System.out.println("订单开始统计数据处理");
+        // System.out.println("订单开始统计数据处理");
+        log.info("订单开始统计数据处理，订单编号:" + menuOrder.getOId());
 
         // 订单消息处理
         messageService.sendMessage(menuOrder.getOId());
 
-        System.out.println("订单结束统计数据处理");
+        // System.out.println("订单结束统计数据处理");
+        log.info("订单结束统计数据处理，订单编号:" + menuOrder.getOId());
 
         return new ResponseResult(200, "成功保存订单数据");
     }

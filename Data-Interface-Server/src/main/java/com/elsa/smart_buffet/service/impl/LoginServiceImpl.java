@@ -8,6 +8,7 @@ import com.elsa.smart_buffet.pojo.ResultBox.ResponseResult;
 import com.elsa.smart_buffet.service.LoginService;
 import com.elsa.smart_buffet.utils.JwtUtil;
 import com.elsa.smart_buffet.utils.RedisCache;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -20,6 +21,7 @@ import java.util.Map;
 import java.util.Objects;
 
 @Service
+@Slf4j
 public class LoginServiceImpl implements LoginService {
 
     @Autowired
@@ -37,6 +39,7 @@ public class LoginServiceImpl implements LoginService {
 
         // 如果没有通过，则给出对应的提示
         if(Objects.isNull(authenticate)) {
+            log.info(comsumer.getCName() + "登录失败");
             throw new RuntimeException("登录失败");
         }
 
@@ -51,6 +54,7 @@ public class LoginServiceImpl implements LoginService {
         redisCache.setCacheObject("login:" + comsumerid, loginComsumer);
 //        System.out.println("login:" + userid);
 //        System.out.println(loginUser);
+        log.info(loginComsumer.getComsumer().getCName() + "登录成功");
         return new ResponseResult(200, "登录成功", map);
     }
 
@@ -61,6 +65,7 @@ public class LoginServiceImpl implements LoginService {
 
         // 如果没有通过，则给出对应的提示
         if(Objects.isNull(authenticate)) {
+            log.info(manager.getMaName() + "登录失败");
             throw new RuntimeException("登录失败");
         }
 
@@ -75,6 +80,8 @@ public class LoginServiceImpl implements LoginService {
         redisCache.setCacheObject("login:" + managerid, loginManager);
 //        System.out.println("login:" + userid);
 //        System.out.println(loginUser);
+        log.info(manager.getMaName() + "登录成功");
+
         return new ResponseResult(200, "登录成功", map);
     }
 
@@ -86,6 +93,7 @@ public class LoginServiceImpl implements LoginService {
         int userid = loginComsumer.getComsumer().getCId();
         //删除redis中的值
         redisCache.deleteObject("login:"+userid);
+        log.info(userid + "注销成功");
         return new ResponseResult(200,"注销成功");
     }
 
@@ -97,6 +105,7 @@ public class LoginServiceImpl implements LoginService {
         int userid = loginManager.getManager().getMaId();
         //删除redis中的值
         redisCache.deleteObject("login:"+userid);
+        log.info(userid + "注销成功");
         return new ResponseResult(200,"注销成功");
     }
 }
